@@ -32,13 +32,12 @@ steps:
       key: ${{ secrets.SSH_PRIVATE_KEY }}
       script: |
         if [ ! -d "/home/ubuntu/app" ]; then
-          git clone https://github.com/SEU_USUARIO/SEU_REPO.git /home/ubuntu/app
+          git clone https://github.com/elias-nsc/meu-bolso-backend.git /home/ubuntu/app
         fi
 
         cd /home/ubuntu/app
         git pull origin main
 
-        # cria .env no servidor
         cat > .env <<EOF
         MONGO_URI=${{ secrets.MONGO_URI }}
         JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}
