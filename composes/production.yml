@@ -6,6 +6,6 @@ services:
     container_name: meu-bolso-prod
     restart: always
     ports:
-      - "80:8000"
+      - "8000:8000"
     env_file:
       - ../.env
