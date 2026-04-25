@@ -93,12 +93,11 @@ async def google_login_or_register(code: str) -> dict:
         user.save()
 
     # Gera token JWT incluindo o user_id
-    jwt_token = create_access_token({
-        "sub": email,
-        "user_id": str(user.id)          # <-- ID do usuário salvo em cookie
-    })
+    jwt_token = create_access_token({"sub": email})
 
     return {
         "access_token": jwt_token,
         "token_type": "bearer",
+        "user_id": str(user.id),
+        "nome": user.nome,
     }
